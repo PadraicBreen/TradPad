@@ -1,0 +1,6 @@
+{
+    "mimetype": "text/html",
+    "transforms": {
+        "__modules": ["tpHtml"]
+    }
+}

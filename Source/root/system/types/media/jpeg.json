@@ -1,0 +1,8 @@
+{
+    "binary": true,
+    "mimetype": "image/jpeg",
+    "alias" :["jpg"],
+    "transforms": {
+        "__modules": ["tpImage"]
+    }
+}

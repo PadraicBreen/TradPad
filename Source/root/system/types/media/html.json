@@ -1,7 +1,0 @@
-{
-    "binary": true,
-    "mimetype": "image/png",
-    "transforms": {
-        "__modules": ["tpImage"]
-    }
-}

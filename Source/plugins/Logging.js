@@ -1,30 +1,16 @@
 /* global Reflect */
 
 const util = require('util');
-const fs = require('fs');
+const fs = require('app').fs;
 const os = require('os');
 const types = require('types');
 const timestamp = Symbol("timestamp");
-var dateFormat = require('util/DateFormat');
+
 
 const levels = types.createEnum("error", "warn", "log", "info", "debug");
 
 
 var defaultLevel = levels.info;
-var formatters = types.createKeyedDispatch(util.format, levels);
-
-
-var createStream = function(path) {
-  if (path.includes("%d")) {
-    var d = dateFormat.format(Date.now(), "yyyyMMdd");
-    path = path.replace("%d", d);
-  }
-  else if (path.includes("%m")) {
-    var m = dateFormat.format(Date.now(), "yyyyMMddHHmm");
-    path = path.replace("%m", m);
-  }
-  return openStream(path, {'flags': 'a'});
-};
 
 var openStream = function(path) {
   return fs.createWriteStream(path, {'flags': 'a'});
@@ -34,7 +20,7 @@ var writeTimestamp = function (wr, date) {
   wr.write(os.EOL + "Time: " + date.toLocaleTimeString() + os.EOL + "===============" + os.EOL);
 };
 
-function writeLog(wr, formatter, message) {
+function writeLog(name,level, message) {
   let oldTime = wr[timestamp];
   let date = new Date();
   let newTime = Math.floor(date.getTime() / 1000);

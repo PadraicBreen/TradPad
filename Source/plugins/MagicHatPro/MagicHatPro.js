@@ -1,6 +1,6 @@
 let path = require('path');
-let logging = require('logging');
-let logger;
+
+let logger = require('util/logger').create("Application");;
 let app = require('app');
 let fs = app.fs;
 
@@ -10,9 +10,7 @@ function loggerStream(path) {
 
 
 async function start() {
-  logging.openStream = loggerStream;
-  // Create the logger
-  logger = logging.create("application");
+   // Share the logger
   app.env.logger = logger;
 
   logger.log("Initializing Core Application");

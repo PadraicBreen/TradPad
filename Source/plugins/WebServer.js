@@ -2,6 +2,7 @@ var http = require('http');
 var app = require('app');
 var constants = require('constants');
 var REST = require('rest');
+
 /**
  *
  * @param {http.ClientRequest} request

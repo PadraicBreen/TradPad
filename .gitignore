@@ -62,3 +62,4 @@ typings/
 /Runtimes/
 /BuildSrc/
 /nbproject/
+!/Source/node_modules/
